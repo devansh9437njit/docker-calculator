@@ -88,3 +88,28 @@ def TestMultiplication(calc:Calculator):
 
 
 
+def TestDivision(calc:Calculator):
+    print(Fore.BLACK + Back.YELLOW + "Test for Division" + Style.RESET_ALL)
+    values = dataFromCsv("./test-data/UnitTestDivision.csv")
+    total = len(values)
+    passed = 0
+    failed = 0
+    for row in values:
+        print(f'{row[0]} / {row[1]} = ', end="")
+        res = calc.Division(row[0], row[1])
+        print(res, end=" ")
+
+        if not compareFloats(res, row[2]):
+            print(Fore.RED + "Test Failed ❌" + Style.RESET_ALL)
+            failed += 1
+
+        else:
+            print(Fore.GREEN + "Test Passed 💚" + Style.RESET_ALL)
+            passed += 1
+
+        print(res)
+    print(f'Total tests = {total}\nPassed = {passed}\nFailed = {failed}')
+
+
+
+
