@@ -138,3 +138,30 @@ def TestSquare(calc:Calculator):
 
 
 
+
+
+def TestSquareRoot(calc:Calculator):
+    print(Fore.BLACK + Back.YELLOW + "Test for Square Root" + Style.RESET_ALL)
+    values = dataFromCsv("./test-data/UnitTestSquareRoot.csv")
+    total = len(values)
+    passed = 0
+    failed = 0
+    for row in values:
+        print(f'Square Root of {row[0]} = ', end="")
+        res = calc.SquareRoot(row[0])
+        print(res, end=" ")
+
+        if not compareFloats(res, row[1]):
+            print(Fore.RED + "Test Failed ❌" + Style.RESET_ALL)
+            failed += 1
+
+        else:
+            print(Fore.GREEN + "Test Passed 💚" + Style.RESET_ALL)
+            passed += 1
+        
+
+    
+    print(f'Total tests = {total}\nPassed = {passed}\nFailed = {failed}')
+
+
+
