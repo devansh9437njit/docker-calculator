@@ -113,3 +113,28 @@ def TestDivision(calc:Calculator):
 
 
 
+def TestSquare(calc:Calculator):
+    print(Fore.BLACK + Back.YELLOW + "Test for Square" + Style.RESET_ALL)
+    values = dataFromCsv("./test-data/UnitTestSquare.csv")
+    total = len(values)
+    passed = 0
+    failed = 0
+    for row in values:
+        print(f'Square of {row[0]} = ', end="")
+        res = calc.Square(row[0])
+        print(res, end=" ")
+
+        if row[1] != res:
+            print(Fore.RED + "Test Failed ❌" + Style.RESET_ALL)
+            failed += 1
+
+        else:
+            print(Fore.GREEN + "Test Passed 💚" + Style.RESET_ALL)
+            passed += 1
+        
+
+    
+    print(f'Total tests = {total}\nPassed = {passed}\nFailed = {failed}')
+
+
+
